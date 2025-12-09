@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Directory to store the active wallpaper directory choice
+ACTIVE_DIR_FILE="$HOME/.cache/active_wallpaper_dir"
+
+# Fallback directory if the file doesn't exist
+DEFAULT_WALLPAPER_DIR="$HOME/Pictures/wallpaper/DARK"
+
+# Get the directory from the cache file, or use the default
+if [[ -f "$ACTIVE_DIR_FILE" ]]; then
+    WALLPAPER_DIR=$(<"$ACTIVE_DIR_FILE")
+else
+    WALLPAPER_DIR="$DEFAULT_WALLPAPER_DIR"
+fi
+
+# File to store the index state for the current directory
+INDEX_FILE="$HOME/.cache/current_wallpaper_index_$(basename "$WALLPAPER_DIR")"
+
+# Get a list of image files sorted alphabetically
+mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f | sort)
+
+# Get current index or start from 0
+if [[ -f "$INDEX_FILE" ]]; then
+    INDEX=$(<"$INDEX_FILE")
+else
+    INDEX=0
+fi
+
+# Ensure index is within bounds
+NUM_WALLPAPERS=${#WALLPAPERS[@]}
+if [[ $NUM_WALLPAPERS -eq 0 ]]; then
+    echo "No wallpapers found in $WALLPAPER_DIR"
+    exit 1
+fi
+
+# Use wallpaper at current index
+CURRENT_WALLPAPER="${WALLPAPERS[$INDEX]}"
+
+# Display the wallpaper
+swww img "$CURRENT_WALLPAPER" --transition-type any --transition-duration 1 --transition-fps 60
+
+# Increment and save new index (loop around if needed)
+INDEX=$(( (INDEX + 1) % NUM_WALLPAPERS ))
+echo "$INDEX" > "$INDEX_FILE"
