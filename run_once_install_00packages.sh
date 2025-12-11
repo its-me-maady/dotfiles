@@ -70,11 +70,10 @@ native_packages=(
 aur_packages=(
     # --- System ---
     "wlogout"                    # Visual Logout Menu
-    "plymouth-theme-colorful-loop-git" # Boot animation theme
+    "nautilus"
     
     # --- Apps ---
     "brave-bin"                  # Web Browser
-    "visual-studio-code-bin"     # VS Code
     "cursor-bin"                 # AI Code Editor
     "localsend-bin"              # Local File Transfer
     

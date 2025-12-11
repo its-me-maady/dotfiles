@@ -2,6 +2,7 @@
 # run_once_80_install_root.sh
 
 echo "--- Starting Root Level Configurations ---"
+HOME=/home/maady
 
 # --- 1. Configure Ly (Login Manager) ---
 LY_SOURCE="$HOME/.config/ly/config.ini"
