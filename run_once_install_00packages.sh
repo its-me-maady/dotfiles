@@ -71,6 +71,7 @@ aur_packages=(
     # --- System ---
     "wlogout"                    # Visual Logout Menu
     "nautilus"
+    "xorg-xhost"
     
     # --- Apps ---
     "brave-bin"                  # Web Browser
@@ -141,7 +142,7 @@ sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
 
 # Enable Login Manager (Ly)
-sudo systemctl enable --now ly
+sudo systemctl enable ly
 
 # Enable BTRFS Grub Watcher (For your snapshots)
 sudo systemctl enable --now grub-btrfsd
