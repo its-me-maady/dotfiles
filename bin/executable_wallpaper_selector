@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# Main wallpaper directory
+WALLPAPER_MAIN_DIR="$HOME/Pictures/wallpaper"
+
+# Cache file to store the chosen directory
+ACTIVE_DIR_FILE="$HOME/.cache/active_wallpaper_dir"
+
+# Find all subdirectories
+SUBDIRS=($(find "$WALLPAPER_MAIN_DIR" -maxdepth 1 -mindepth 1 -type d -printf "%f\n"))
+
+# Present subdirectories to Rofi and get user choice
+CHOICE=$(printf "%s\n" "${SUBDIRS[@]}" | rofi -dmenu -i -p "Select Wallpaper Theme:")
+
+# If a choice was made, update the cache file
+if [[ -n "$CHOICE" ]]; then
+    echo "$WALLPAPER_MAIN_DIR/$CHOICE" > "$ACTIVE_DIR_FILE"
+    # Run the wallpaper changer to apply the new wallpaper
+    wallpaper_changer
+fi
