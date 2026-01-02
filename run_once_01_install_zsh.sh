@@ -29,6 +29,7 @@ else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+
 # 4. Install Plugins (Autosuggestions, Syntax Highlighting, Completions)
 echo "[4/6] Cloning plugins..."
 ZSH_CUSTOM="$ZSH/custom"
@@ -76,5 +77,4 @@ echo "1. Everything is installed in: ~/.config/zsh"
 echo "2. A single file (~/.zshenv) points there."
 echo "3. Please restart your terminal or type 'zsh' to see the changes."
 
-# Optional: Change default shell
-# chsh -s $(which zsh)
+chsh -s $(which zsh)
