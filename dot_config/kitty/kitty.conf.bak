@@ -1,0 +1,74 @@
+# vim:fileencoding=utf-8:ft=conf:foldmethod=marker
+
+font_family			JetBrainsMono Nerd Font
+# bold_font			auto
+# italic_font		auto
+# bold_italic_font	auto
+font_size 13.5
+
+# symbol_map U+EA60-U+EBBC codicon
+disable_ligatures never
+
+allow_remote_control true
+
+remember_window_size no
+
+cursor_shape block
+shell_integration no-cursor
+
+wheel_scroll_multiplier 1
+url_color #0087bd
+url_style curly
+open_url_with default
+url_prefixes http https file ftp gemini irc gopher mailto news git
+detect_urls yes
+
+focus_follows_mouse yes
+pointer_shape_when_grabbed arrow
+
+enable_audio_bell yes
+bell_on_tab no
+
+background_opacity 0.8
+background_blur 5
+window_margin_width 1
+window_padding_width 25
+
+# Disable checking for updates
+update_check_interval 0
+
+confirm_os_window_close 2
+
+
+tab_bar_edge top
+tab_fade 1 1 1 1
+tab_powerline_style slanted
+tab_bar_style fade
+
+shell_integration enabled no-cursor
+
+# Detach/reattach tabs
+map ctrl+f1	detach_tab ask
+
+map kitty_mod+f5 load_config_file
+
+map kitty_mod+.	        next_tab
+map kitty_mod+,  	    previous_tab
+map ctrl+tab		    next_tab
+map kitty_mod+tab	    previous_tab
+map kitty_mod+enter		    new_tab
+map kitty_mod+w		    close_tab
+map kitty_mod+right		move_tab_forward
+map kitty_mod+left		move_tab_backward
+
+# Search in the scrollback. Hit enter to copy field
+#map kitty_mod+escape launch --type=overlay --stdin-source=@screen_scrollback /bin/sh -c "/usr/bin/fzf --no-sort --no-mouse --exact -i --tac | kitty +kitten clipboard"
+
+map super+n new_os_window_with_cwd
+shell /usr/bin/zsh
+
+
+# BEGIN_KITTY_THEME
+# Tokyo Night Storm
+include current-theme.conf
+# END_KITTY_THEME

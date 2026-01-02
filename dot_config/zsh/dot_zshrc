@@ -1,0 +1,88 @@
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.config/zsh/oh-my-zsh"
+
+# If you come from bash you might have to change your $PATH.
+export PATH="$HOME/bin:$PATH"
+export EDITOR="nvim"
+export PAGER="less"
+
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+COMPLETION_WAITING_DOTS="true"
+
+
+plugins=(
+    git
+    zsh-autosuggestions
+    chezmoi
+    zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+source <(fzf --zsh)
+# Example aliases
+alias zshconfig="nvim ~/$ZSH.zshrc"
+alias ohmyzsh="nvim ~/$ZSH.oh-my-zsh"
+alias v="nvim"
+alias i="yay -S"
+alias s="yay -Ss"
+
+mc(){
+    mkdir -pv $1
+    cd $1
+}
+
+nfs() {
+    local file
+    file=$(find ~/.config/nvim -type f | fzf --preview 'bat --style=numbers --color=always --line-range=:100 {}')
+    [ -n "$file" ] && nvim "$file"
+}
+
+dfs() {
+    local file
+    file=$(find ~ -type f | fzf --preview 'bat --style=numbers --color=always --line-range=:100 {}')
+    [ -n "$file" ] && nvim "$file"
+}
+
+rfs() {
+    sudo true || return
+    local file
+    file=$(sudo find / -type f 2>/dev/null | fzf --preview 'bat --style=numbers --color=always --line-range=:100 {}')
+    [ -n "$file" ] && nvim "$file"
+}
+
+zle -N dfs 
+bindkey '^V' dfs
+
+fzf-history-widget() {
+  local selected
+  selected=$(
+    fc -l 1 | awk '{$1=""; print substr($0,2)}' | \
+    fzf --tac --no-sort \
+    --query="$LBUFFER" \
+    --prompt="History: " \
+    --bind "ctrl-r:toggle-sort" \
+    --bind "ctrl-c:abort"
+  )
+  [[ -n "$selected" ]] && LBUFFER="$selected"
+  zle reset-prompt
+}
+
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
+
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# Created by `pipx` on 2025-06-28 06:13:23
+export PATH="$PATH:/home/maady/.local/bin"

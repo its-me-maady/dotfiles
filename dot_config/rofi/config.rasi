@@ -1,0 +1,108 @@
+/* vim: ft=css
+*/
+configuration {
+  font: "Adwaita Sans 14";
+  drun-display-format: "{name}[ - <span weight='light' size='small'>{generic}</span>]";
+  sorting-method: "fzf";
+  disable-history: false;
+  sidebar-mode: false;
+  hover-select: false;
+
+  run,drun {
+    fallback-icon: "application-x-executable";
+  }
+}
+
+* {
+  spacing: 0;
+}
+
+window {
+  background-color: rgba(32, 32, 32, 0.8);
+  border: 2px solid;
+  border-color: #FFFFFF20;
+  border-radius: 22px;
+  width: 512px;
+}
+
+inputbar {
+  margin: 6px;
+  children: [ icon-search, entry ];
+  border: none;
+}
+
+icon-search {
+  expand: false;
+  filename: "./search.svg";
+  size: 24px;
+  vertical-align: 0.5;
+}
+
+prompt {
+  padding: 16px;
+  /* border: 0 1px 0 0; */
+}
+
+textbox {
+  background: transparent;
+  color: white;
+  padding: 8px 16px;
+  blink: true;
+}
+
+entry {
+  placeholder: "Search";
+  text-color: white;
+  expand: true;
+  padding: 8px;
+}
+
+listview {
+  fixed-height: false;
+  lines: 8;
+  spacing: 6px;
+  cycle: false;
+  scrollbar: true;
+  dynamic: true;
+  border: none;
+  margin: 0 0 6px 0;
+}
+
+scrollbar {
+  handle-color: rgba(242, 242, 242, 0.08);
+  handle-width: 12px;
+  handle-rounded-corners: true;
+  margin: 0;
+  padding: 0;
+}
+
+element {
+  margin: 0 6px;
+  orientation: horizontal;
+  /* spacing: 6px; */
+}
+
+element alternate.normal,
+element alternate.normal,
+element normal.normal,
+element normal.normal {
+  /* border: 0 0 1px 0; */
+  /* padding: 4px; */
+  background-color: transparent;
+}
+
+element selected.normal,
+element selected.urgent {
+  background-color: rgba(242, 242, 242, 0.08);
+  border-radius: 22px;
+}
+
+element-text {
+  color: white;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 48px;
+  margin: 6px;
+}

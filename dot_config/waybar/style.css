@@ -1,0 +1,109 @@
+@import "colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font Propo", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: @on_background;
+}
+
+#workspaces {
+    background-color: @outline_variant;
+    padding: 2px 4px;
+    border-radius: 20px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    margin: 2px;
+    min-width: 10px;
+    border-radius: 20px;
+    transition: all ease-in-out 0.3s;
+    background-color: @source_color;
+}
+
+#workspaces button.empty {
+    background: @inverse_primary;
+}
+
+#workspaces button:hover {
+    min-width: 25px;
+    background-color: @source_color;
+}
+
+#workspaces button.visible {
+    min-width: 25px;
+    background-color: @source_color;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#custom-notification,
+#tray {
+    padding: 0 10px;
+    margin: 0 4px;
+    border-radius: 8px;
+    background-color: @surface_container_low;
+}
+
+#clock {
+    color: @primary_fixed_dim;
+}
+
+#pulseaudio {
+    color: @source_color;
+}
+
+#pulseaudio.muted {}
+
+#battery.charging,
+#battery.plugged {
+    color: @source_color;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @error;
+    color: @on_error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    color: @primary_fixed_dim;
+}
+
+#network.disconnected {
+    color: @error;
+}
+
+#bluetooth {
+    color: @primary_fixed_dim;
+}
+
+#bluetooth.disconnected {
+    color: @error;
+}
+
+#custom-notification {
+    font-size: 14px;
+    color: red;
+}
