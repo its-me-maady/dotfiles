@@ -1,0 +1,16 @@
+{{- if ne .chezmoi.username "root" -}}
+#!/bin/bash
+
+SUDOERS_FILE="/etc/sudoers.d/chezmoi-{{ .chezmoi.username }}"
+
+# Check if the file exists before trying to delete it
+if [ -f "$SUDOERS_FILE" ]; then
+    echo "Cleanup: Revoking passwordless sudo rights..."
+    
+    # We use sudo rm, but since the file still exists, 
+    # we still have passwordless sudo for this one last command!
+    sudo rm "$SUDOERS_FILE"
+    
+    echo "Done. Sudo password is now required again."
+fi
+{{- end -}}
