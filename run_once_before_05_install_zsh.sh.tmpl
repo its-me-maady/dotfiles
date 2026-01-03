@@ -77,4 +77,4 @@ echo "1. Everything is installed in: ~/.config/zsh"
 echo "2. A single file (~/.zshenv) points there."
 echo "3. Please restart your terminal or type 'zsh' to see the changes."
 
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) {{ .chezmoi.username }}
