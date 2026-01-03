@@ -43,3 +43,5 @@ packages=(
 
 # 4. Correct syntax to print all array elements
 yay -S --noconfirm --needed "${packages[@]}"
+
+systemctl enable ly@tty2.service
