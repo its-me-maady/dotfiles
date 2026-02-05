@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+#file: {{ include "packagelist.txt" | sha256sum }}j
+
+# Define the file path
+PKG_FILE="{{ .chezmoi.sourceDir }}/packagelist.txt"
+
+# 1. Check if file exists
+if [ ! -f "$PKG_FILE" ]; then
+    echo "Error: $PKG_FILE not found!"
+    exit 1
+fi
+
+# 2. Read file into the 'packages' array
+# grep -vE "^\s*#|^\s*$" -> Removes comment lines (#) and empty lines
+packages=($(grep -vE "^\s*#|^\s*$" "$PKG_FILE"))
+
+# 4. Correct syntax to print all array elements
+yay -S --noconfirm --needed "${packages[@]}"
+
+systemctl enable ly@tty2.service

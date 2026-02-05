@@ -47,6 +47,7 @@ window#waybar {
 #battery,
 #network,
 #pulseaudio,
+#bluetooth,
 #custom-notification,
 #tray {
     padding: 0 10px;
@@ -96,7 +97,7 @@ window#waybar {
 }
 
 #bluetooth {
-    color: @primary_fixed_dim;
+    color: @source_color;
 }
 
 #bluetooth.disconnected {
