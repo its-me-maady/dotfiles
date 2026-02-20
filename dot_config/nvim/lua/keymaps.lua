@@ -8,7 +8,7 @@ map("n", "<leader>i", "gg=G``", { noremap = true, silent = true })
 map("i", "jk", "<Esc>", { noremap = true, silent = true })
 map("n", "<leader>gf", vim.lsp.buf.code_action, { noremap = true, silent = true })
 
-map({ "i", "n" }, "<C-n>", "<cmd>saveas ", { noremap = true, silent = true })
+map({ "i", "n" }, "<C-n>", ":saveas ", { noremap = true, silent = true })
 map({ "i", "n" }, "<C-w>", "<Esc><cmd>w<CR>", { noremap = true, silent = true })
 map({ "i", "n" }, "<C-s>", "<Esc><cmd>noautocmd w<CR>", { noremap = true, silent = true })
 map({ "i", "n" }, "<C-a>", "<cmd>wa<CR>", { noremap = true, silent = true })
@@ -43,6 +43,9 @@ map("n", "co", "<cmd>cclose<CR>", { noremap = true, silent = true })
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+map("n","n","nzz")
+map("n","N","Nzz")
 
 map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
 map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
