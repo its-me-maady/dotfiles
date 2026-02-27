@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 return {
 	"ThePrimeagen/harpoon",
 	dependencies = {
@@ -11,7 +10,10 @@ return {
 		require("telescope").load_extension("harpoon")
 
 		vim.keymap.set("n", "<leader>a", mark.add_file)
+
 		vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+		vim.keymap.set("n", "<leader>se", "<Esc>:Telescope harpoon marks<CR>")
+
 		vim.keymap.set("n", "<leader>,", ui.nav_prev)
 		vim.keymap.set("n", "<leader>.", ui.nav_next)
 
@@ -27,6 +29,5 @@ return {
 		vim.keymap.set("n", "<leader>l", function()
 			ui.nav_file(4)
 		end)
-		vim.keymap.set("n", "<leader>se", "<Esc>:Telescope harpoon marks<CR>")
 	end,
 }

@@ -30,6 +30,7 @@ ly
 man-db
 matugen
 mesa-utils
+nano
 nautilus
 neovim
 noto-fonts

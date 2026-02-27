@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
@@ -21,7 +20,7 @@ return {
 
 				map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
 
-				map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+				map("gca", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
 				map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 
@@ -92,14 +91,9 @@ return {
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			"stylua", -- Used to format Lua code
-		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
-			ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-			automatic_installation = true,
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}

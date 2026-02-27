@@ -9,7 +9,7 @@ fi
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
 
 export EDITOR="nvim"
-export PAGER="less"
+export PAGER="bat --plain -l man"
 export BROWSER="zen-browser"
 
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -33,8 +33,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-alias ls='ls --color=auto' # Add color to ls output
-setopt autocd
 
 
 # Zsh History Configuration
@@ -44,6 +42,11 @@ SAVEHIST=10000
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+setopt autocd
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 #COMPLETIONS
 source <(fzf --zsh)
@@ -52,7 +55,7 @@ eval "$(register-python-argcomplete pipx)"
 source <(arduino-cli completion zsh)
 
 # Example aliases
-alias zshconfig="cd $ZDOTDIR && nvim"
+alias zshconfig="pushd $ZDOTDIR ; nvim ;popd;"
 alias v="nvim"
 alias i="yay -Syu"
 alias s="yay -Ss"
@@ -73,11 +76,6 @@ rfs() {
 zle -N dfs 
 bindkey '^V' dfs
 
-unalias man 2>/dev/null
-man() {
-    command man "$@" | bat --plain --language=man
-}
-compdef _man man
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

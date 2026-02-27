@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 return {
 	"rmagatti/auto-session",
 	lazy = false,
