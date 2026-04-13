@@ -19,7 +19,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.signcolumn = "yes"
-vim.o.colorcolumn = "80"
+vim.o.colorcolumn = "88"
 
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
@@ -38,3 +38,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+
+-- test area
+
+-- Completion options
+vim.o.completeopt = "menuone,noinsert,noselect"
+
+-- Enable omnifunc
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end,
+})
+
+

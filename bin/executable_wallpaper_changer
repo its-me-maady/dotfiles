@@ -37,7 +37,7 @@ fi
 CURRENT_WALLPAPER="${WALLPAPERS[$INDEX]}"
 
 # Display the wallpaper
-matugen image "$CURRENT_WALLPAPER"
+matugen image "$CURRENT_WALLPAPER" --prefer=darkness
 
 # Increment and save new index (loop around if needed)
 INDEX=$(( (INDEX + 1) % NUM_WALLPAPERS ))

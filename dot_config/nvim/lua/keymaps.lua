@@ -45,3 +45,5 @@ map("n", "<A-k>", "<cmd>m -2<CR>", { noremap = true, silent = true, desc = "Move
 -- quality of life
 map("n", "x", '"_x', { noremap = true, silent = true })
 map("v", "p", '"_dP', { noremap = true, silent = true })
+
+map("i", "<C-Space>", "<C-x><C-o>", {noremap = true, silent=true})

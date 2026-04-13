@@ -61,14 +61,14 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: @source_color;
+    color: @primary_fixed_dim;
 }
 
 #pulseaudio.muted {}
 
 #battery.charging,
 #battery.plugged {
-    color: @source_color;
+    color: @primary_fixed_dim;
 }
 
 @keyframes blink {
@@ -88,16 +88,9 @@ window#waybar {
     animation-direction: alternate;
 }
 
-#network {
-    color: @primary_fixed_dim;
-}
-
-#network.disconnected {
-    color: @error;
-}
 
 #bluetooth {
-    color: @source_color;
+    color: @primary_fixed_dim;
 }
 
 #bluetooth.disconnected {
@@ -106,5 +99,5 @@ window#waybar {
 
 #custom-notification {
     font-size: 14px;
-    color: red;
+    color: @primary_fixed_dim;
 }

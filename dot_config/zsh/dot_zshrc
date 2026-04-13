@@ -32,7 +32,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
+source /home/maady/.config/zsh/.clauderc
 
 
 # Zsh History Configuration
@@ -60,21 +60,12 @@ alias v="nvim"
 alias i="yay -Syu"
 alias s="yay -Ss"
 
-dfs() {
-    local dir
-    dir=$(fd --hidden --type d . ~ | fzf )
-    [ -n "$dir" ] && cd "$dir" && nvim < /dev/tty
-}
-
 rfs() {
     sudo true || return
     local file
     file=$(sudo find / -type f 2>/dev/null | fzf --preview 'bat --style=numbers --color=always --line-range=:100 {}')
-    [ -n "$file" ] && nvim "$file"
+    [ -n "$file" ] && sudoedit "$file"
 }
-
-zle -N dfs 
-bindkey '^V' dfs
 
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
