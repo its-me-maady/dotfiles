@@ -51,8 +51,6 @@ bindkey -M vicmd v edit-command-line
 #COMPLETIONS
 source <(fzf --zsh)
 source <(uv generate-shell-completion zsh)
-eval "$(register-python-argcomplete pipx)"
-source <(arduino-cli completion zsh)
 
 # Example aliases
 alias zshconfig="pushd $ZDOTDIR ; nvim ;popd;"
