@@ -12,6 +12,17 @@ export EDITOR="nvim"
 export PAGER="bat --plain -l man"
 export BROWSER="zen-browser"
 
+# for Android emulator
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# For nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+export PATH=~/.npm-global/bin:$PATH
+
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -27,12 +38,12 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
     git
+    golang
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-source /home/maady/.config/zsh/.clauderc
 
 
 # Zsh History Configuration
