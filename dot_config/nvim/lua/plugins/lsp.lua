@@ -6,7 +6,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 		{ "j-hui/fidget.nvim", opts = {} },
-        {"saghen/blink.cmp", opts = {} },
+        "saghen/blink.cmp",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -87,6 +87,8 @@ return {
 					},
 				},
 			},
+            gopls = {},
+            html = {},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})

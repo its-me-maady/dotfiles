@@ -4,16 +4,11 @@ return {
         "L3MON4D3/LuaSnip",
         version = "2.*",
         build = "make install_jsregexp", -- optional but recommended
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+        },
         config = function()
             require("luasnip").setup({})
-        end,
-    },
-
-    -- Optional: friendly snippets
-    {
-        "rafamadriz/friendly-snippets",
-        lazy = true,
-        config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
@@ -22,6 +17,7 @@ return {
     {
         "saghen/blink.cmp",
         version = "1.*",
+        build = "cargo build --release",
         dependencies = {
             "L3MON4D3/LuaSnip",
             "saghen/blink.lib",
@@ -29,6 +25,8 @@ return {
         opts = {
             keymap = {
                 preset = "enter",
+                ["<Tab>"] = { "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "snippet_backward", "fallback" },
             },
 
             appearance = {
@@ -37,7 +35,7 @@ return {
 
             completion = {
                 documentation = {
-                    auto_show = false,
+                    auto_show = true,
                     auto_show_delay_ms = 500,
                 },
             },
