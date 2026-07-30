@@ -37,7 +37,29 @@ fi
 CURRENT_WALLPAPER="${WALLPAPERS[$INDEX]}"
 
 # Display the wallpaper
-matugen image "$CURRENT_WALLPAPER" --prefer=darkness
+#!/usr/bin/env bash
+
+cursor_pos=$(hyprctl cursorpos)
+cursor_x=$(echo "$cursor_pos" | cut -d',' -f1 | tr -d ' ')
+cursor_y=$(echo "$cursor_pos" | cut -d',' -f2 | tr -d ' ')
+
+monitor_json=$(hyprctl monitors -j | jq '.[] | select(.focused==true)')
+monitor_width=$(echo "$monitor_json" | jq '.width')
+monitor_height=$(echo "$monitor_json" | jq '.height')
+monitor_scale=$(echo "$monitor_json" | jq '.scale')
+
+logical_width=$(echo "$monitor_width / $monitor_scale" | bc -l)
+logical_height=$(echo "$monitor_height / $monitor_scale" | bc -l)
+
+# Percentages: x is straightforward, y still needs flipping (0.0 = bottom, 1.0 = top... actually check below)
+pct_x=$(echo "$cursor_x / $logical_width" | bc -l)
+pct_y=$(echo "1 - ($cursor_y / $logical_height)" | bc -l)
+
+awww img "$CURRENT_WALLPAPER" \
+    --transition-type grow \
+    --transition-pos "${pct_x},${pct_y}" \
+    --transition-fps 60 \
+    --transition-duration 1.5
 
 # Increment and save new index (loop around if needed)
 INDEX=$(( (INDEX + 1) % NUM_WALLPAPERS ))

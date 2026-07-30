@@ -1,5 +1,3 @@
-@import "colors.css";
-
 * {
     font-family: "JetBrainsMono Nerd Font Propo", sans-serif;
     font-size: 12px;
@@ -8,41 +6,34 @@
     padding: 0;
     margin: 0;
 }
-
 window#waybar {
     background-color: transparent;
-    color: @on_background;
+    color: #c0caf5; /* fg */
 }
-
 #workspaces {
-    background-color: @outline_variant;
+    background-color: #292e42; /* bg_highlight */
     padding: 2px 4px;
     border-radius: 20px;
 }
-
 #workspaces button {
     padding: 0 5px;
     margin: 2px;
     min-width: 10px;
     border-radius: 20px;
     transition: all ease-in-out 0.3s;
-    background-color: @source_color;
+    background-color: #7aa2f7; /* blue */
 }
-
 #workspaces button.empty {
-    background: @inverse_primary;
+    background: #545c7e; /* dark3 */
 }
-
 #workspaces button:hover {
     min-width: 25px;
-    background-color: @source_color;
+    background-color: #7aa2f7; /* blue */
 }
-
 #workspaces button.visible {
     min-width: 25px;
-    background-color: @source_color;
+    background-color: #bb9af7; /* magenta */
 }
-
 #clock,
 #battery,
 #network,
@@ -53,51 +44,43 @@ window#waybar {
     padding: 0 10px;
     margin: 0 4px;
     border-radius: 8px;
-    background-color: @surface_container_low;
+    background-color: #16161e; /* bg_dark */
 }
-
 #clock {
-    color: @primary_fixed_dim;
+    color: #7dcfff; /* cyan */
 }
-
 #pulseaudio {
-    color: @primary_fixed_dim;
+    color: #9ece6a; /* green */
 }
-
-#pulseaudio.muted {}
-
+#pulseaudio.muted {
+    color: #565f89; /* comment */
+}
 #battery.charging,
 #battery.plugged {
-    color: @primary_fixed_dim;
+    color: #e0af68; /* yellow */
 }
-
 @keyframes blink {
     to {
         background-color: #ffffff;
         color: #000000;
     }
 }
-
 #battery.critical:not(.charging) {
-    background-color: @error;
-    color: @on_error;
+    background-color: #f7768e; /* red */
+    color: #16161e; /* bg_dark */
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-
-
 #bluetooth {
-    color: @primary_fixed_dim;
+    color: #7aa2f7; /* blue */
 }
-
 #bluetooth.disconnected {
-    color: @error;
+    color: #f7768e; /* red */
 }
-
 #custom-notification {
     font-size: 14px;
-    color: @primary_fixed_dim;
+    color: #ff9e64; /* orange */
 }

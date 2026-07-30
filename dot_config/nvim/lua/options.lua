@@ -3,10 +3,14 @@ vim.o.relativenumber = true
 vim.o.cursorline = true
 vim.o.so = 10
 
-vim.o.tabstop = 4
 vim.o.expandtab = true
-vim.o.softtabstop = 4
+vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+
+vim.opt.foldenable = false
+vim.opt.foldlevelstart = 99
+
 
 vim.o.undofile = true
 vim.o.swapfile = false
@@ -39,12 +43,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- test area
 
--- Completion options
 vim.o.completeopt = "menuone,noinsert,noselect"
-
--- Enable omnifunc
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.bo[args.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
