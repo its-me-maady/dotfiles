@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo systemctl stop docker docker.socket containerd
+sudo rm -rf /opt/docker
+sudo rm -rf /var/lib/containerd
+sudo systemctl start containerd docker
+

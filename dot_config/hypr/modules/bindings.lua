@@ -20,7 +20,7 @@ hl.bind(mainMod .. " + " .. "V", hl.dsp.window.float())
 
 hl.bind(mainMod .. " + " .. "F", hl.dsp.window.fullscreen())
 
-hl.bind(mainMod .. " + " .. "D", hl.dsp.exec_cmd("pkill rofi || . $(" .. os.getenv("HOME") .. ")/.config/rofi/launchers/type-1/launcher.sh"))
+hl.bind(mainMod .. " + " .. "D", hl.dsp.exec_cmd("pkill rofi || " .. os.getenv("HOME") .. "/.config/rofi/launchers/type-1/launcher.sh"))
 
 hl.bind(mainMod .. " + " .. "B", hl.dsp.exec_cmd("zen-browser"))
 
@@ -116,7 +116,7 @@ hl.bind(mainMod .. " + " .. "mouse:273", hl.dsp.window.resize(), { mouse = true 
 
 -- Selected area screenshot
 
-hl.bind("print", hl.dsp.exec_cmd("grim -g $(slurp) ~/Pictures/Screenshots/screenshot_$(date +%s).png && wl-copy < ~/Pictures/Screenshots/screenshot_$(date +%s).png && notify-send Screenshot saved Selected area captured -i ~/Pictures/Screenshots/screenshot_$(date +%s).png"))
+hl.bind("print", hl.dsp.exec_cmd("FILE=~/Pictures/Screenshots/screenshot_$(date +%s).png; grim -g \"$(slurp)\" \"$FILE\" && wl-copy < \"$FILE\" && notify-send \"Screenshot saved\" \"Selected area captured\" -i \"$FILE\""))
 
 --Screen recordr
 
